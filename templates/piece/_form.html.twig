@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
+    </div>
+    <a class="btn btn-outline-danger" role="button" href="{{ path('piece_index') }}">Retour</a>
+    <button class="btn btn-outline-success" role="button">
+        {{ button_label|default('Enregistrer') }}
+    </button>
+{{ form_end(form) }}

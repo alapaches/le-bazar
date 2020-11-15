@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lieu index{% endblock %}
+
+{% block body %}
+    <h1>Liste des endroits</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Localité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lieu in lieus %}
+            <tr>
+                <td>{{ lieu.nom }}</td>
+                <td>{{ lieu.piece }}</td>
+                <td>
+                    <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune donnée à afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-primary" role="button" href="{{ path('lieu_new') }}">Créer un nouvel endroit d'une pièce</a>
+{% endblock %}

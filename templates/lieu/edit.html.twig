@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lieu - Edition{% endblock %}
+
+{% block body %}
+    <h1>Modifier un lieu</h1>
+
+    {{ include('lieu/_form.html.twig', {'button_label': 'Valider'}) }}
+
+    <!-- <a class="btn btn-outline-danger" role="button" href="{{ path('lieu_index') }}">Retour</a> -->
+    <div class="form-group">
+        {{ include('lieu/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

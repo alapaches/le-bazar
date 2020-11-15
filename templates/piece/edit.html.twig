@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Piece - Edition{% endblock %}
+
+{% block body %}
+    <h1>Modifier une pièce</h1>
+
+    {{ include('piece/_form.html.twig', {'button_label': 'Valider'}) }}
+
+    <!-- <a href="{{ path('piece_index') }}">back to list</a> -->
+    <div class="form-group">
+        {{ include('piece/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -3,10 +3,58 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <!-- Renders a link tag (if your module requires any CSS)
+                <link rel="stylesheet" href="/build/app.css"> -->
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{{ path('app_home') }}">{% if (app.user) %}Le Bazar de {{app.user.username}} {% else %} Le Bazar Général {% endif %}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            {% if (app.user) %}
+                                <a class="nav-link" href="{{ path('app_logout')}}">Déconnexion <span class="sr-only"></span></a>
+                            {% else %}
+                                <a class="nav-link" href="{{ path('app_login')}}">Connexion <span class="sr-only"></span></a>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('objet_index') }}">Objets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('piece_index') }}">Pieces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('lieu_index') }}">Endroits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('categorie_index') }}">Catégories</a>
+                        </li>
+                    </ul>
+                    <select class="form-control mr-sm-2" id="search-object"></select>
+                    <!-- <form class="form-inline">
+                        <select class="form-control" id="search-object"></select>
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Rechercher</button>
+                    </form> -->
+                </div>
+            </nav>
+        {% endblock %}
+        {% block body %}
+            
+        {% endblock %}
+        {% block footer %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <!-- Renders app.js & a webpack runtime.js file
+                <script src="/build/runtime.js"></script>
+                <script src="/build/app.js"></script> -->
+        {% endblock %}
     </body>
 </html>

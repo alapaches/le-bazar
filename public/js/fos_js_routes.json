@@ -1,0 +1,1 @@
+{"base_url":"","routes":{"objet_search":{"tokens":[["text","\/objet\/search\/object"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":["GET"],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":[]}

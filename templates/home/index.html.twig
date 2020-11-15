@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le Bazar - Accueil{% endblock %}
+
+{% block body %}
+    <div class="container-full-bg">
+        <div class="jumbotron">
+            <div class="col-sm-12">
+                {% if (app.user) %}
+                    <h1 class="display-4">Bienvenue sur votre Bazar, {{app.user.username}} !</h1>
+                {% else %}
+                    <h1 class="display-4">Bienvenue sur le Bazar !</h1>
+                {% endif %}
+                <p class="lead">Ici, vous allez pouvoir enfin ranger vos objets et vos outils afin de les retrouver dans votre bazar. Plus rien ne pourra être perdu désormais.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
