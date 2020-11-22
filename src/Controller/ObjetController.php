@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Lieu;
 use App\Entity\Objet;
 use App\Form\ObjetType;
 use App\Repository\ObjetRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/objet")
@@ -120,5 +121,28 @@ class ObjetController extends AbstractController
         }
 
         return $this->redirectToRoute('objet_index');
+    }
+
+    /**
+     * @Route("/get/lieu-by-piece", name="objet_get_lieu_by_piece", methods={"GET"}, options={"expose"=true})
+     */
+    public function getLieuByPiece(Request $request)
+    {
+        $lieuxRepo = $this->em->getRepository(Lieu::class);        
+        $lieux = $lieuxRepo->createQueryBuilder("q")
+            ->where("q.piece = :pieceId")
+            ->setParameter("pieceId", $request->query->get("pieceId"))
+            ->getQuery()
+            ->getResult()
+        ;        
+        $lieuxTab = array();
+        foreach($lieux as $lieu){
+            $lieuxTab[] = array(
+                "id" => $lieu->getId(),
+                "nom" => $lieu->getNom()
+            );
+        }
+        
+        return new JsonResponse($lieuxTab);
     }
 }

@@ -8,6 +8,14 @@
             {{ form_label(form.piece) }}
             {{ form_widget(form.piece) }}
         </div>
+        <div class="form-group">
+            {{ form_label(form.categorie) }}
+            {{ form_widget(form.categorie) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.lieu) }}
+            {{ form_widget(form.lieu) }}
+        </div>
         <a class="btn btn-outline-danger" role="button" href="{{ path('objet_index') }}">Retour</a>
         <button class="btn btn-outline-success" role="button">
             {{ button_label|default('Enregistrer') }}

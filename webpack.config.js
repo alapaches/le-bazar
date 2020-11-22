@@ -24,6 +24,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('objet', './assets/objet.js')
     .addEntry('select2', ['./assets/select2.full.min.js','./assets/select2-locales/fr.js'])
     //.addEntry('page2', './assets/page2.js')
 

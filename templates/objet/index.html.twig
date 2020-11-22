@@ -3,7 +3,9 @@
 {% block title %}Objet index{% endblock %}
 
 {% block body %}
-    <h1>Liste des objets</h1>
+    <div class="col-3">
+        <h1>Liste des objets</h1>
+    </div>
     <div class="row m-auto">
         {% for objet in objets %}
         <div class="col-sm-2">
@@ -25,10 +27,12 @@
             </div>
         {% endfor %}
     </div>
-    <div class="clearfix"></div>
-    <div class="row m-auto">
-        <span>
-            <a class="btn btn-outline-primary" href="{{ path('objet_new') }}" role="button">Créer un nouvel objet</a>
-        </span>
+    <div class="col-3">
+        <div class="clearfix"></div>
+        <div class="row m-auto">
+            <span>
+                <a class="btn btn-outline-primary" href="{{ path('objet_new') }}" role="button">Créer un nouvel objet</a>
+            </span>
+        </div>
     </div>
 {% endblock %}

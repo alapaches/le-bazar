@@ -33,6 +33,12 @@ class Objet
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="objets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lieu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,8 +68,32 @@ class Objet
         return $this;
     }
 
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(string $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
     public function __toString(): ?string
     {
         return $this->nom;
+    }
+
+    public function getLieu(): ?Lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieu $lieu): self
+    {
+        $this->lieu = $lieu;
+
+        return $this;
     }
 }
